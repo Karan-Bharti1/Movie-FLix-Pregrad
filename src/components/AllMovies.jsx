@@ -69,7 +69,9 @@ const AllMovies = () => {
       </div>
     );
   };
-
+  if(loading ){return(<div className="md-shimmer">
+  <h1 className="md-shimmer-text">MovieFlix</h1>
+</div>)}
   return (
     <div className="all-movies-page">
 
@@ -86,7 +88,7 @@ const AllMovies = () => {
         </button>
       </div>
 
-      {loading && <p className="loading-text">Loading Movies...</p>}
+     
       {error && <p className="error-text">{error}</p>}
 
       {!loading && !error && (
