@@ -32,10 +32,11 @@ const AllMovies = () => {
         fetch(`${url}upcoming`, options)
       ]);
 
-      const nowPlayingData = await nowPlayingRes.json();
-      const popularData = await popularRes.json();
-      const topRatedData = await topRatedRes.json();
-      const upcomingData = await upcomingRes.json();
+      const [nowPlayingData,popularData, topRatedData,upcomingData ]=await Promise.all([nowPlayingRes.json(),popularRes.json(),topRatedRes.json(),upcomingRes.json()])
+      // const nowPlayingData = await nowPlayingRes.json();
+      // const popularData = await popularRes.json();
+      // const topRatedData = await topRatedRes.json();
+      // const upcomingData = await upcomingRes.json();
 
       setNowPlaying(nowPlayingData.results);
       setPopular(popularData.results);
@@ -56,12 +57,12 @@ const AllMovies = () => {
   const renderMovies = (movies) => {
     return (
       <div className="row-container">
-        {movies.map((movie) => (
-          <div key={movie.id} className="row-card">
+        {movies?.map((movie) => (
+          <div key={movie?.id} className="row-card">
             <Link to={`/movie/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
+                alt={movie?.title}
               />
             </Link>
           </div>
