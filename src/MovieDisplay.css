@@ -139,7 +139,7 @@
 
 @media (max-width: 768px) {
   .md-hero {
-    height: 85vh;
+    height: 100vh;
   }
 
   .md-hero-content {
